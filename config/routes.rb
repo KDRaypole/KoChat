@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
 
-  root to: "chatrooms#index"
+  root to: "chatrooms#index", as: "/"
 end
