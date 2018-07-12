@@ -1,0 +1,77 @@
+<div class="panel panel-default fill-space">
+  <div class="panel-heading">  <h4 >User Profile</h4></div>
+   <div class="panel-body">
+
+    <div class="box box-info">
+
+            <div class="box-body">
+                     <div class="col-sm-6">
+                       <div  align="center">
+                        <h4 style="color: #66CDAA;"><%= @user.username %> </h4></span>
+                        <img alt="User Pic" src=<%= @user.avatar.url(:thumb) %> id="profile-image1" class="img-circle img-responsive">
+                     </div>
+
+              <br>
+
+              <!-- /input-group -->
+            </div>
+            <div class="col-sm-6">
+
+              <br>
+              <% if user_signed_in? && current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= link_to "Unfollow", friendships_path(user_id: @user.id), style: "width:100px;", class: "btn btn-default", method: :delete  %>
+                <% else %>
+                  <%= link_to "Follow", friendships_path(user_id: @user.id), style: "width:100px;", class: "btn btn-primary", method: :post %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
+            <hr style="margin:5px 0 5px 0;">
+
+
+            <div class="col-sm-5 col-xs-6 tital " >User ID</div><div class="col-sm-7 col-xs-6 "><h5><%= @user.id %></5></div>
+     <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Followers</div><div class="col-sm-7"><%= @followers %></div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Followed</div><div class="col-sm-7"><%= @followed %></div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Date Of Joining:</div><div class="col-sm-7"><%= @user.created_at.strftime("%d %b %Y") %></div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Date Of Birth:</div><div class="col-sm-7">11 Jun 1998</div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Place Of Birth:</div><div class="col-sm-7">Shirdi</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Nationality:</div><div class="col-sm-7">Indian</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Relition:</div><div class="col-sm-7">Hindu</div>
+
+
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+
+
+    </div>
+    </div>
+</div>

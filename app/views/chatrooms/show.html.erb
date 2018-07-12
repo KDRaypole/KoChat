@@ -1,0 +1,29 @@
+<h3>
+  <strong>Name:</strong>
+  <%= @chatroom.name %>
+</h3>
+
+<div class="row app">
+  <div class="col-sm-10">
+    <div class="chat-box">
+      <div id="chat-data" class="messages-box">
+        <div data-behavior='messages' data-chatroom-id='<%= @chatroom.id %>'>
+          <% @messages.each do |message| %>
+            <%= render message %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form_for [@chatroom, Message.new], remote: true do |f| %>
+        <%= f.text_area :body, rows: 1 , class: 'form-control', autofocus: true, style: "resize: none" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <h3 style="text-align: center"> Users </h3>
+      <ul class="list-group" style="padding-right: 5px">
+        <% @chatroom.users.each do |user| %>
+          <li class="list-group-item"><%= link_to user.username, user_path(user), class: 'btn btn-outline-white btn-rounded font-large' %></li>
+        <% end %>
+  </div>
+</div>

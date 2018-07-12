@@ -1,0 +1,6 @@
+<div class="chat">
+  <div class="user-photo"><%= image_tag(message.user.avatar.url(:thumb))%></div>
+  <div class="chat-message">
+    <strong><%= link_to message.user.username, user_path(message.user) %>: </strong><%= message.body %>
+  </div>
+</div>

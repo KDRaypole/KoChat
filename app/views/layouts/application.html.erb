@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('/assets/c.png', alt:'Logo')%>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag("c.png", alt: "Chat", style: 'height:25px;width:25px'), root_path, class: "navbar-brand" %>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%#= link_to "Recommended", links_path %></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <%= yield :right_nav %>
+              <li><%= link_to "Settings", edit_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
+            <% else %>
+              <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
+              <li><%= link_to "Login", new_user_session_path, class: 'btn btn-outline-white btn-rounded' %></li>
+            <% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="fluid-container" style="">
+      <div class="row">
+        <% if user_signed_in? %>
+          <div class="col-sm-2" style="position: fixed; top: 70px; left: 0px">
+            <h3 style="text-align: center"> Chatrooms </h3>
+              <ul class='list-group'>
+                <% current_user.chatrooms.each do |chatroom| %>
+                  <li class='list-group-item'><%= link_to chatroom.name, chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %></li>
+                <% end %>
+              </ul>
+          </div>
+          <div class="col-sm-10 col-sm-offset-2" style="position: absolute; top: 70px; bottom: 60px; left: 0px">
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="col-sm-12" style="top: 70px;">
+            <%= yield %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+    <footer class="footer fixed-bottom font-small unique-color-dark pt-4">
+
+      <!-- Footer Elements -->
+      <div class="container">
+
+        <!-- Call to action -->
+        <ul class="list-unstyled list-inline text-center py-2">
+          <li class="list-inline-item">
+            <h5 class="mb-1">Register for free</h5>
+          </li>
+          <li class="list-inline-item">
+            <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
+          </li>
+        <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+        </ul>
+        <!-- Call to action -->
+      </div>
+
+    </footer>
+
+  </body>
+</html>
