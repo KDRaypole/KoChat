@@ -6,7 +6,7 @@
 <div class="row app">
   <div class="col-sm-10">
     <div class="chat-box">
-      <div id="chat-data" class="messages-box">
+      <div id="chat-data" style="padding: 15px; margin-bottom:5px; border-radius: 5px" class="messages-box shadow-inset-center">
         <div data-behavior='messages' data-chatroom-id='<%= @chatroom.id %>'>
           <% @messages.each do |message| %>
             <%= render message %>

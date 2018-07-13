@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :chatroom_users
   has_many :chatrooms, through: :chatroom_users
+  has_many :owned_chatrooms, class_name: "Chatroom"
 
   has_many :active_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_friendships, class_name: "Friendship", foreign_key: "followed_id", dependent: :destroy

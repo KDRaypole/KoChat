@@ -20,14 +20,10 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.new(chatroom_params)
 
-    respond_to do |format|
-      if @chatroom.save
-        format.html { redirect_to @chatroom, notice: 'Chatroom was successfully created.' }
-        format.json { render :show, status: :created, location: @chatroom }
-      else
-        format.html { render :new }
-        format.json { render json: @chatroom.errors, status: :unprocessable_entity }
-      end
+    if @chatroom.save
+      redirect_to chatrooms_path, notice: 'Chatroom was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -57,6 +53,6 @@ class ChatroomsController < ApplicationController
     end
 
     def chatroom_params
-      params.require(:chatroom).permit(:name, :room_size)
+      params.require(:chatroom).permit(:name, :room_size, :owner_id)
     end
 end
