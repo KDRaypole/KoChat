@@ -13,5 +13,5 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
       chat_box.scrollTop = chat_box.scrollHeight
     else
       $("[data-behavior='chatroom-link'][data-chatroom-id='#{data.chatroom_id}']").css('color',' black')
-      $("[data-behavior='chatroom-link'][data-chatroom-id='#{data.chatroom_id}']").parent().addClass('notification')
+      $("[data-behavior='chatroom-link'][data-chatroom-id='#{data.chatroom_id}']").parent().addClass('notification').addClass('blink-1')
 

@@ -3,7 +3,7 @@ class ChatroomUsersController < ApplicationController
   before_action :set_chatroom
 
   def create
-    if @chatroom.users.count >= 5
+    if @chatroom.users.count >= @chatroom.room_size
       redirect_to chatrooms_path
       flash[:alert] = "Sorry This Chatroom is Full"
     else
