@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag('/assets/c.png', alt:'Logo')%>
   </head>
@@ -31,9 +32,14 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= form_with url: search_path, local: true, method: :get, html: { class: "form-inline", style: "margin-top:10px" } do |form| %>
+                <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control" %>
+              <% end %>
+            </li>
             <% if user_signed_in? %>
               <%= yield :right_nav %>
-              <li><%= link_to "Settings", edit_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
+              <li><%= link_to '<i class="fa fa-cog fa-lg" aria-hidden="true"></i>'.html_safe , edit_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
             <% else %>
               <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
@@ -54,7 +60,7 @@
                 <% end %>
               </ul>
           </div>
-          <div class="col-sm-10 col-sm-offset-2" style="position: absolute; top: 70px; bottom: 60px; left: 0px">
+          <div class="col-sm-10 col-sm-offset-2" style="position: fixed; top: 60px; bottom: 80px; left: 0px">
             <%= yield %>
           </div>
         <% else %>

@@ -15,7 +15,7 @@
       </div>
 
       <%= form_for [@chatroom, Message.new], remote: true do |f| %>
-        <%= f.text_area :body, rows: 1 , class: 'form-control', autofocus: true, style: "resize: none" %>
+        <%= f.text_field :body, rows: 1 , class: 'form-control', autofocus: true, style: "resize: none" %>
       <% end %>
     </div>
   </div>

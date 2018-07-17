@@ -21,6 +21,7 @@ gem 'jquery-ui-rails', '~> 5.0'
 gem 'acts_as_list'
 gem 'paperclip', '~> 4.1'
 gem 'rails_emoji_picker'
+gem 'ransack', "~> 1.8", ">= 1.8.2"
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'

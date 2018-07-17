@@ -1,0 +1,2 @@
+module DisplayChatroomHelper
+end
