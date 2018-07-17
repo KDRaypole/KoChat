@@ -10,16 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require easy-autocomplete
+ *= require easy-autocomplete.themes
  *= require_tree .
  *= require_self
  */
 .scale-in-bl{-webkit-animation:scale-in-bl .5s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-bl .5s cubic-bezier(.25,.46,.45,.94) both}
 
 @-webkit-keyframes scale-in-bl{0%{-webkit-transform:scale(0);transform:scale(0);-webkit-transform-origin:0 100%;transform-origin:0 100%;opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:0 100%;transform-origin:0 100%;opacity:1}}@keyframes scale-in-bl{0%{-webkit-transform:scale(0);transform:scale(0);-webkit-transform-origin:0 100%;transform-origin:0 100%;opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:0 100%;transform-origin:0 100%;opacity:1}}
-
-.scale-in-center{-webkit-animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-center .5s cubic-bezier(.25,.46,.45,.94) both}
-
-@-webkit-keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
 
 .blink-1{-webkit-animation:blink-1 .6s both;animation:blink-1 .6s both}
 

@@ -17,5 +17,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails_emoji_picker
+//= require jquery.easy-autocomplete
 //= require_tree .
 
