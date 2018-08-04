@@ -12,10 +12,9 @@
 //
 //= require activestorage
 //= require turbolinks
-//= require bootstrap-sprockets
-//= require bootstrap
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require rails_emoji_picker
 //= require jquery.easy-autocomplete
 //= require modaal.min

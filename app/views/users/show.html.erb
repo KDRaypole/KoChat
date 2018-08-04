@@ -7,9 +7,7 @@
             <div class="box-body">
                      <div class="col-sm-6">
                        <div  align="center">
-                        <h4 style="color: #66CDAA;"><%= @user.username %> </h4></span>
-                        <img alt="User Pic" src=<%= @user.avatar.url(:thumb) %> id="profile-image1" class="img-circle img-responsive">
-                     </div>
+                        <h4 style="color: #66CDAA;"><%= @user.username %> </h4></span> <img alt="User Pic" src=<%= @user.avatar.url(:thumb) %> id="profile-image1" class="img-circle img-responsive"> </div>
 
               <br>
 
@@ -20,11 +18,15 @@
               <br>
               <% if user_signed_in? && current_user != @user %>
                 <% if current_user.following?(@user) %>
-                  <%= link_to "Unfollow", friendships_path(user_id: @user.id), style: "width:100px;", class: "btn btn-default", method: :delete  %>
+                  <%= link_to "Unfollow", friendships_path(user_id: @user.id), style: "width:100px; background-color:#f5f5f5", class: "btn btn-default", method: :delete  %>
                 <% else %>
                   <%= link_to "Follow", friendships_path(user_id: @user.id), style: "width:100px;", class: "btn btn-primary", method: :post %>
                 <% end %>
+                <br>
+                <h4><%= link_to 'Followers', followers_user_path(@user) %></h4>
+                <h4><%= link_to 'Chatrooms', chatrooms_user_path(@user) %></h4>
               <% end %>
+              <br>
             </div>
             <div class="clearfix"></div>
             <hr style="margin:5px 0 5px 0;">
@@ -35,7 +37,6 @@
 <div class="bot-border"></div>
 
 <div class="col-sm-5 col-xs-6 tital " >Email</div><div class="col-sm-7"><%= @user.email %></div>
-
   <div class="clearfix"></div>
 <div class="bot-border"></div>
 
@@ -48,7 +49,10 @@
 <div class="bot-border"></div>
 
 <div class="col-sm-5 col-xs-6 tital " >Date Of Joining:</div><div class="col-sm-7"><%= @user.created_at.strftime("%d %b %Y") %></div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
 
+<div class="col-sm-5 col-xs-6 tital " >Last Message Sent</div><div class="col-sm-7"><%= @user.messages.last.created_at.strftime("%d %b %Y, %l%P") %></div>
   <div class="clearfix"></div>
 <div class="bot-border"></div>
             <!-- /.box-body -->

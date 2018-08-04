@@ -1,0 +1,30 @@
+<h2> Here are <%=@user.username%>'s friends </h2>
+<hr>
+<% @followers.each do |follower| %>
+  <div class="row chat">
+    <div class="user-photo">
+      <%= image_tag(follower.avatar.url(:thumb))%>
+    </div>
+    <div class="col-sm-3" style="text-align:center; padding:5px">
+      <h5><%= link_to follower.username, user_path(follower) %></h5>
+    </div>
+    <div class="col-sm-3" style="text-align:center; padding:10px">
+      Friends:
+      <% if follower.followers.count == 0 %>
+        0
+      <% else %>
+        <%= follower.followers.count %>
+      <% end %>
+    </div>
+    <div class="col-sm-3" style="text-align:center; padding:10px">
+      Chatrooms:
+      <% if follower.chatrooms.count == 0 %>
+        0
+      <% else %>
+        <%= follower.chatrooms.count %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>
+
