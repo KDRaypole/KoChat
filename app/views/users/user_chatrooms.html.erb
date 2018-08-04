@@ -1,0 +1,20 @@
+<h2> Here are <%=@user.username%>'s chatrooms </h2>
+<hr>
+<% @chatrooms.each do |chatroom| %>
+  <div class="row chat">
+    <div class="user-photo">
+    </div>
+    <div class="col-sm-4" style="text-align:center; padding:5px">
+      <h5><%= link_to chatroom.name, display_chatrooms_path(chatroom) %></h5>
+    </div>
+    <div class="col-sm-4" style="text-align:center; padding:10px">
+      Users:
+      <% if chatroom.users.count == 0 %>
+        0
+      <% else %>
+        <%= chatroom.users.count %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>
