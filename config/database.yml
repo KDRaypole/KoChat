@@ -9,3 +9,10 @@ default: &default
 
 development:
   <<: *default
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: Chat_production
+  username: KDRaypole01
+  password: test
