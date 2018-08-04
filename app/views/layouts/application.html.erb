@@ -7,70 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/modaal@0.4.3/dist/js/modaal.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag('/assets/c.png', alt:'Logo')%>
   </head>
 
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to image_tag("c.png", alt: "Chat", style: 'height:25px;width:25px'), root_path, class: "navbar-brand" %>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><%#= link_to "Recommended", links_path %></li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= form_with url: search_path, local: true, method: :get, html: { class: "form-inline", style: "margin-top:10px" } do |form| %>
-                <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control" %>
-              <% end %>
-            </li>
-            <% if user_signed_in? %>
-              <%= yield :right_nav %>
-              <li><%= link_to '<i class="fa fa-cog fa-lg" aria-hidden="true"></i>'.html_safe , edit_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
-            <% else %>
-              <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
-              <li><%= link_to "Login", new_user_session_path, class: 'btn btn-outline-white btn-rounded' %></li>
+    <% if user_signed_in? %>
+      <div class="col-sm-2" style="padding-right: 15px; position: fixed; top: 0px; left: 0px; height: 100% ">
+        <h3 style="margin-top: 15px; margin-bottom: 20px; text-align: center"><%= link_to 'Chatrooms', chatrooms_path %> </h3>
+          <ul class='list-group'>
+            <% current_user.chatrooms.each do |chatroom| %>
+              <li class='list-group-item'><%= link_to chatroom.name, chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %></li>
             <% end %>
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    <div class="fluid-container" style="">
-      <div class="row">
-        <% if user_signed_in? %>
-          <div class="col-sm-2" style="position: fixed; top: 70px; left: 0px">
-            <h3 style="text-align: center"> Chatrooms </h3>
-              <ul class='list-group'>
-                <% current_user.chatrooms.each do |chatroom| %>
-                  <li class='list-group-item'><%= link_to chatroom.name, chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %></li>
-                <% end %>
-              </ul>
-          </div>
-          <div class="col-sm-10 col-sm-offset-2" style="position: fixed; top: 60px; bottom: 80px; left: 0px">
-            <%= yield %>
-          </div>
-        <% else %>
-          <div class="col-sm-12" style="top: 70px;">
-            <%= yield %>
-          </div>
-        <% end %>
-
       </div>
-    </div>
+      <div class="col-sm-10 col-sm-offset-2" style="padding-left: 0px; padding-right: 0px; position: fixed; top: 0px; padding-bottom: 140px; left: 0px">
+        <%= render partial: 'nav' %>
+        <div style="padding: 0px 15px 15px 15px">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-sm-12">
+        <%= render partial: 'nav' %>
+        <%= yield %>
+      </div>
+    <% end %>
     <footer class="footer fixed-bottom font-small unique-color-dark pt-4">
 
       <!-- Footer Elements -->

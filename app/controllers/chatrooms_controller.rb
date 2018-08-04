@@ -42,7 +42,7 @@ class ChatroomsController < ApplicationController
   def destroy
     @chatroom.destroy
     respond_to do |format|
-      format.html { redirect_to chatrooms_url, notice: 'Chatroom was successfully destroyed.' }
+      format.html { redirect_to chatrooms_url, notice: "Chatroom was successfully destroyed." }
       format.json { head :no_content }
     end
   end

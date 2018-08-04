@@ -1,0 +1,37 @@
+<div style="border: none; margin-bottom: 0px; background-color: #f5f5f5" class="navbar navbar-default navbar-fixed">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to '<i class="fa fa-comment fa-lg" aria-hidden="true"></i>'.html_safe , root_path, style: 'color: #66CDAA', class: 'navbar-brand' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%#= link_to "Recommended", links_path %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= form_with url: search_path, local: true, method: :get, html: { class: "form-inline", style: "margin-top:10px" } do |form| %>
+            <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control" %>
+          <% end %>
+        </li>
+        <% if user_signed_in? %>
+          <%= yield :right_nav %>
+          <li><%= link_to '<i class="fa fa-cog fa-lg" aria-hidden="true"></i>'.html_safe , edit_user_registration_path, class: 'btn vtn-outline-white btn-rounded' %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-outline-white btn-rounded' %></li>
+          <li><%= link_to "Login", new_user_session_path, class: 'btn btn-outline-white btn-rounded' %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
