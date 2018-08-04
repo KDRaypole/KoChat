@@ -18,7 +18,7 @@
         <h3 style="margin-top: 15px; margin-bottom: 20px; text-align: center"><%= link_to 'Chatrooms', chatrooms_path %> </h3>
           <ul class='list-group'>
             <% current_user.chatrooms.each do |chatroom| %>
-              <li class='list-group-item'><%= link_to chatroom.name, chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %></li>
+              <li class='list-group-item'><%= link_to truncate(chatroom.name, length: 17), chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %></li>
             <% end %>
           </ul>
       </div>
