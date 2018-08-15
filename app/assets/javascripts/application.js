@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require rails_emoji_picker
 //= require jquery.easy-autocomplete
+//= require emojionearea
 //= require modaal.min
 //= require_tree .
 

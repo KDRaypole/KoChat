@@ -10,6 +10,7 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
     chat_box = $('#chat-data')
     if active_chatroom.length > 0
       active_chatroom.append(data.message)
+      $("#message-#{data.message_id}").addClass('scale-in-bl')
       chat_box.scrollTop = chat_box.scrollHeight
     else
       $("[data-behavior='chatroom-link'][data-chatroom-id='#{data.chatroom_id}']").css('color',' black')

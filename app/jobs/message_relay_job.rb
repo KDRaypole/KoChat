@@ -4,7 +4,8 @@ class MessageRelayJob < ApplicationJob
   def perform(message)
     ActionCable.server.broadcast "chatrooms:#{message.chatroom.id}", {
       message: MessagesController.render(message),
-      chatroom_id: message.chatroom.id
+      chatroom_id: message.chatroom.id,
+      message_id: message.id
     }
   end
 end

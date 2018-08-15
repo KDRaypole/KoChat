@@ -1,6 +1,17 @@
-<h1>Editing Chatroom</h1>
+<div class="col-sm-offset-4 col-sm-7">
+  <div class="panel panel-default" style="text-align:center; width:50%; height:250px">
+    <div class="panel-heading">
+      <h3>Editing <%= @chatroom.name%></h3>
+    </div>
+      <div class="panel-body">
+        <div class="box box-info">
+          <div class="box-body" >
+          <%= render 'form', chatroom: @chatroom %>
 
-<%= render 'form', chatroom: @chatroom %>
-
-<%= link_to 'Show', @chatroom %> |
-<%= link_to 'Back', chatrooms_path %>
+          <%= link_to 'Show', @chatroom %> |
+          <%= link_to 'Back', chatrooms_path %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

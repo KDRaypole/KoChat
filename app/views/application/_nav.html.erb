@@ -30,13 +30,13 @@
           <div class="user-photo"><%=link_to image_tag(current_user.avatar.url(:thumb)), user_path(current_user) %></li>
         </li>
         <li style="margin-top:10px" class="dropdown">
-          <button style="background-color: inherit" class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+          <button style="background-color: inherit" class="btn toggle-dropdown" type="button" data-toggle="dropdown">
             <span><%= current_user.username %></span>
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><%= link_to '<i class="fa fa-cog fa-lg" aria-hidden="true"></i>'.html_safe , edit_user_registration_path, class: 'btn vtn-outline-white btn-rounded' %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
+            <li><%= link_to 'Settings <i class="fa fa-cog fa-lg" aria-hidden="true"></i>'.html_safe , edit_user_registration_path, class: 'btn vtn-outline-white btn-rounded' %></li>
+            <li><%= link_to 'Logout <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>'.html_safe , destroy_user_session_path, method: :delete, class: 'btn btn-outline-white btn-rounded' %></li>
           </ul>
         </li>
         <% else %>
@@ -47,3 +47,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </div>
+ <script>
+   $('.toggle-dropdown').click(function(){
+     $('.dropdown-menu').slideToggle('fast');
+   });
+ </script>

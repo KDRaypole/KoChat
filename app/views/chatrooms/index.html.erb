@@ -7,8 +7,6 @@
     <%= alert %>
   </div>
 <% end %>
-<p id="notice"></p>
-<p id="alert"><%= alert %></p>
 <div class="panel panel-default fill-space">
   <div class="panel-heading">
     <div class="pull-right"><%= link_to "New Chatroom", new_chatroom_path, class: "js-modal btn btn-primary", style: "margin-top:5px" %>
@@ -34,7 +32,7 @@
           <div class="col-sm-1"><%= link_to 'Leave', chatroom_chatroom_users_path(chatroom), method: :delete, class: 'btn btn-outline-white btn-rounded font-large' %></div>
           <div class="col-sm-1">
             <% if chatroom.owner == current_user %>
-              <%= link_to '<i class="fa fa-times" style="color:#F6546A" aria-hidden="true"></i>'.html_safe, chatroom_path(chatroom), method: :delete, class: 'btn btn-outline-white btn-rounded font-large' %>
+              <%= link_to '<i class="fa fa-times" style="color:#F6546A" aria-hidden="true"></i>'.html_safe, chatroom_path(chatroom), method: :delete, class: 'btn btn-outline-white btn-rounded font-large', data: { confirm: "Are you sure you want to delete #{chatroom.name}" }%>
             <% end %>
           </div>
           <div class="clearfix"></div>
