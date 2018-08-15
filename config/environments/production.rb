@@ -1,5 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.cache_store = :redis_store, "redis://h:p5a980f286272226d80d98a8509a4c84f60c0b7884c32f51fa228bd24ec350dbe@ec2-18-209-218-148.compute-1.amazonaws.com:21709", { expires_in: 90.minutes }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

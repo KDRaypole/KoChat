@@ -10,6 +10,7 @@
  *
  *= require easy-autocomplete
  *= require easy-autocomplete.themes
+ *= require emojionearea
  *= require modaal
  *= require_tree .
  *= require_self
@@ -147,6 +148,11 @@ li.list-group-item a {
 }
 .navbar-default .navbar-nav > li > a:hover {
   color: #66CDAA !important;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 html,
