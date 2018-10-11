@@ -198,6 +198,9 @@ body {
 .form-control:focus {
   border-color: #66CDAA !important;
 }
+.btn:focus {
+  outline: none;
+}
 $brand-primary: #66CDAA;
 @import "font-awesome";
 @import "rails_emoji_picker";
