@@ -9,3 +9,5 @@ $(document).on "turbolinks:load", ->
       setTimeout ->
         mydiv.scrollTop(mydiv.prop("scrollHeight"))
       , 200
+  $('#chatrooms').sortable
+    axis: 'y'

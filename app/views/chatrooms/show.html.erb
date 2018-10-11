@@ -23,7 +23,7 @@
     <h3 style="text-align: center"> Users </h3>
       <ul class="list-group" style="padding-right: 5px">
         <% @chatroom.users.each do |user| %>
-          <li class="list-group-item"><%= link_to user.username, user_path(user), class: 'btn btn-outline-white btn-rounded font-large' %></li>
+          <li class="grow-big list-group-item"><%= link_to user.username, user_path(user), class: 'btn btn-outline-white btn-rounded font-large' %></li>
         <% end %>
   </div>
 </div>

@@ -4,10 +4,12 @@
     <title>ChatApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
-    <script type="text/javascript" src="js/jquery.emojipicker.js"></script>
 
-    <!-- Emoji Data -->
+    <script type="text/javascript" src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.emojipicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.a.css">
     <script type="text/javascript" src="js/jquery.emojis.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -23,7 +25,7 @@
         <h3 style="margin-top: 15px; text-align: center"><%= link_to 'Chatrooms', chatrooms_path %> </h3>
           <ul class='list-group'>
             <% current_user.chatrooms.each do |chatroom| %>
-              <li class='dropdown list-group-item'><%= link_to truncate(chatroom.name, length: 17), chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %>
+              <li class='grow-big dropdown list-group-item'><%= link_to truncate(chatroom.name, length: 17), chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %>
               <div class="toggle-chatroom-<%=chatroom.id%>-users">
                 <span style="margin-left: 50%; display: inherit;" class="caret"></span>
               </div>
@@ -65,7 +67,6 @@ $('.toggle-chatroom-<%=chatroom.id%>-users').click(function(){
           <li class="list-inline-item">
             <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
           </li>
-        <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
         </ul>
         <!-- Call to action -->
       </div>

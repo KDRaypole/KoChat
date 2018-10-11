@@ -15,6 +15,8 @@ class MessagesController < ApplicationController
     @chatroom = Chatroom.find(params[:chatroom_id])
   end
 
+private
+
   def message_params
     params.require(:message).permit(:body)
   end

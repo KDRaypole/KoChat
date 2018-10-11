@@ -27,7 +27,7 @@
           <%= yield :right_nav %>
 
         <li style="margin:6px 0px 0px 8px" class="chat">
-          <div class="user-photo"><%=link_to image_tag(current_user.avatar.url(:thumb)), user_path(current_user) %></li>
+          <div class="grow-big user-photo"><%=link_to image_tag(current_user.avatar.url(:thumb), class: 'img-circle nav-user-image'), user_path(current_user) %></li>
         </li>
         <li style="margin-top:10px" class="dropdown">
           <button style="background-color: inherit" class="btn toggle-dropdown" type="button" data-toggle="dropdown">
