@@ -87,6 +87,9 @@ body a {
   background: #ccc;
   border-radius: 50%;
 }
+.nav-user-image{
+  border: solid 1px #66CDAA;
+}
 
 .chat .chat-message {
   width: 30%;
@@ -97,9 +100,6 @@ body a {
 }
 div.friend {
   background-color: #F08080;
-}
-.list-group-item {
-  padding: 0px !important;
 }
 .font-large {
   font-size: large !important;
@@ -113,12 +113,14 @@ div.friend {
   color: black !important;
 }
 .list-group-item {
+  padding: 0px !important;
   position: relative;
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+  margin-bottom: 10px !important;
 }
 li.list-group-item:hover {
   background-color: #f0f0f0;
@@ -155,8 +157,15 @@ ul {
   padding: 0;
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.01); }
+
+.grow-big { transition: all .2s ease-in-out; }
+.grow-big:hover { transform: scale(1.1); }
+
 html,
 body {
+  font-family: 'Montserrat', sans-serif !important;
   background-color: #f5f5f5 !important;
   text-decoration: none;
   margin:0;
@@ -165,6 +174,29 @@ body {
 }
 .btn-secondary {
   background-color: #ddd
+}
+.btn-primary {
+  background-color: inherit !important;
+  color: #66CDAA !important;
+  border-color: #66CDAA !important;
+  transition: .3s;
+}
+.btn-primary:hover {
+  color: white !important;
+  background-color: #66CDAA !important;
+}
+.btn-danger {
+  background-color: inherit !important;
+  color: #ff4040 !important;
+  border-color: #ff4040 !important;
+  transition: .3s;
+}
+.btn-danger:hover {
+  color: white !important;
+  background-color: #ff4040 !important;
+}
+.form-control:focus {
+  border-color: #66CDAA !important;
 }
 $brand-primary: #66CDAA;
 @import "font-awesome";

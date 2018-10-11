@@ -14,9 +14,9 @@
     <h3 style="margin-top: 10px">Chatrooms</h3>
   </div>
   <div class="panel-body" style="padding: 0px">
-    <div class="box box-info">
+    <ul id="chatrooms" class="box box-info">
       <% @chatrooms.each do |chatroom| %>
-        <div class="box-item">
+        <li id="chatroom_<%=chatroom.id%>" class="box-item grow">
           <div class="col-sm-4 tital" ><p style="padding-top: 10px" class="font-large"><%= chatroom.name %></p></div>
           <% if chatroom.users.count >= chatroom.room_size %>
             <div class="col-sm-2">
@@ -36,9 +36,9 @@
             <% end %>
           </div>
           <div class="clearfix"></div>
-        </div>
+        </li>
       <% end %>
-    </div>
+    </ul>
   </div>
 </div>
 <br>
