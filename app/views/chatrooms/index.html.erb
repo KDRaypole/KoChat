@@ -16,7 +16,7 @@
   <div class="panel-body" style="padding: 0px">
     <ul id="chatrooms" class="box box-info">
       <% @chatrooms.each do |chatroom| %>
-        <li id="chatroom_<%=chatroom.id%>" class="box-item grow">
+        <li id="chatroom_<%=chatroom.id%>" class="box-item">
           <div class="col-sm-4 tital" ><p style="padding-top: 10px" class="font-large"><%= chatroom.name %></p></div>
           <% if chatroom.users.count >= chatroom.room_size %>
             <div class="col-sm-2">
