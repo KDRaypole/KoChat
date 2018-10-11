@@ -10,6 +10,9 @@ default: &default
 
 development:
   <<: *default
+test:
+  <<: *default
+  database: Chat_test
 
 production:
   adapter: postgresql
