@@ -22,6 +22,10 @@ class User < ApplicationRecord
     "#{username}".parameterize
   end
 
+  def admin_for chatroom
+    id == chatroom.owner_id
+  end
+
   def follow(user)
     active_friendships.create(followed_id: user.id)
   end

@@ -15,6 +15,9 @@ class ChatroomsController < ApplicationController
   end
 
   def edit
+    if !current_user.admin_for(@chatroom)
+      redirect_back fallback_location: root_url, notice: "You do not own this chatroom"
+    end
   end
 
   def create
@@ -28,23 +31,16 @@ class ChatroomsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @chatroom.update(chatroom_params)
-        format.html { redirect_to @chatroom, notice: 'Chatroom was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chatroom }
-      else
-        format.html { render :edit }
-        format.json { render json: @chatroom.errors, status: :unprocessable_entity }
-      end
+    if @chatroom.update(chatroom_params)
+      redirect_to @chatroom, notice: 'Chatroom was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @chatroom.destroy
-    respond_to do |format|
-      format.html { redirect_to chatrooms_url, notice: "Chatroom was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to chatrooms_url, notice: "Chatroom was successfully destroyed."
   end
 
   private

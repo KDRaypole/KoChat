@@ -19,14 +19,12 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= form_with url: search_path, local: true, method: :get, html: { class: "form-inline", style: "margin-top:10px" } do |form| %>
+          <%= form_with url: search_path, local: true, method: :get, html: { class: "auto-search form-inline", style: "margin-top:10px" } do |form| %>
             <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control" %>
           <% end %>
         </li>
         <% if user_signed_in? %>
-          <%= yield :right_nav %>
-
-        <li style="margin:6px 0px 0px 8px" class="chat">
+          <%= yield :right_nav %> <li style="margin:6px 0px 0px 8px" class="chat">
           <div class="grow-big user-photo"><%=link_to image_tag(current_user.avatar.url(:thumb), class: 'img-circle nav-user-image'), user_path(current_user) %></li>
         </li>
         <li style="margin-top:10px" class="dropdown">
@@ -48,6 +46,9 @@
   </div><!-- /.container-fluid -->
 </div>
  <script>
+   $('.auto-search').on('submit', function(e){
+     e.preventDefault();
+   });
    $('.toggle-dropdown').click(function(){
      $('.dropdown-menu').slideToggle('fast');
    });
