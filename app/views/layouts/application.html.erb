@@ -16,7 +16,7 @@
   <body data-action=<%=javascript_action%> data-controller=<%=javascript_controller%>>
     <% if user_signed_in? %>
       <div class="col-sm-2" style="padding-right: 15px; position: fixed; top: 0px; left: 0px; height: 100% ">
-        <h3 style="margin-top: 15px; text-align: center"><%= link_to 'Chatrooms', chatrooms_path %> </h3>
+        <h3 style="margin-top: 15px; text-align: center">Chatrooms</h3>
           <ul class='list-group'>
             <% current_user.chatrooms.each do |chatroom| %>
               <li class='grow dropdown list-group-item'><%= link_to truncate(chatroom.name, length: 17), chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id }, class: 'btn btn-outline-white btn-rounded font-large' %>
